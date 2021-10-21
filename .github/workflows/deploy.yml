@@ -21,14 +21,23 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # deploy the current public folder
-          # to <base url>/x.y.z version subfolder
-          publish_dir: ./public
-          destination_dir: 2.0.0
+          publish_branch: gh-pages
+          publish_dir: ./docs
+          keep_files: true
+          # destination_dir: 2.0.0
 
       - name: Deploy redirect 🚀
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./redirect
+          publish_branch: gh-pages
+          publish_dir: ./docs/redirect
           keep_files: true
+
+      # - name: Deploy Public
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+      #     external_repository: username/external-repository
+      #     publish_branch: your-branch  # default: gh-pages
+      #     publish_dir: ./public
